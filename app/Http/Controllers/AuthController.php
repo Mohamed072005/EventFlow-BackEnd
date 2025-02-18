@@ -23,8 +23,8 @@ class AuthController extends Controller
             if ($result !== true) {
                 throw new ValidationException($result);
             }
-            $user = $this->authService->registerUser($request->all());
-            return response()->json($user, 201);
+            $this->authService->registerUser($request->all());
+            return response()->json(['message' => 'Register Success'], 201);
         } catch (\Illuminate\Database\QueryException $e) {
             return response()->json([
                 'error' => 'Database error',
@@ -47,7 +47,7 @@ class AuthController extends Controller
                 throw new ValidationException($result);
             }
             $user = $this->authService->loginUser($request->only(['email', 'password']));
-            return response()->json($user, 201);
+            return response()->json($user, 200);
         } catch (\Illuminate\Database\QueryException $e) {
             return response()->json([
                 'error' => 'Database error',

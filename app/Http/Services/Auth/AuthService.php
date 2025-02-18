@@ -2,15 +2,18 @@
 
 namespace App\Http\Services\Auth;
 
+use App\Repositories\Role\RoleRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface;
 use Illuminate\Support\Facades\Hash;
 
 class AuthService implements AuthServiceInterface
 {
     private $userRepository;
-    public function __construct(UserRepositoryInterface $userRepository)
+    private $roleRepository;
+    public function __construct(UserRepositoryInterface $userRepository, RoleRepositoryInterface $roleRepository)
     {
         $this->userRepository = $userRepository;
+        $this->roleRepository = $roleRepository;
     }
 
     public function loginUser(array $credentials)
@@ -31,9 +34,9 @@ class AuthService implements AuthServiceInterface
     {
         try {
             $data['password'] = Hash::make($data['password']);
-            $data['role_id'] = '9d3fdf48-f094-4083-9ccb-7e89420c4d66';
-            $user = $this->userRepository->createUser($data);
-            return $user;
+            $role = $this->roleRepository->getOneRole('user');
+            $data['role_id'] = $role->id;
+            $this->userRepository->createUser($data);
         }catch (\Exception $e) {
             throw $e;
         }
