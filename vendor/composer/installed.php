@@ -1,14 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-<<<<<<< HEAD
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-=======
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
->>>>>>> ef71114e95b9ff8048c5104e5d4eb849458c3ab8
-        'reference' => '7bf295629c73e752182ed4a2b97f11fecced79cb',
+        'reference' => 'c3fac2e7f2e292e307b621f5f2e9045414094ddd',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -385,14 +380,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-<<<<<<< HEAD
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-=======
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
->>>>>>> ef71114e95b9ff8048c5104e5d4eb849458c3ab8
-            'reference' => '7bf295629c73e752182ed4a2b97f11fecced79cb',
+            'reference' => 'c3fac2e7f2e292e307b621f5f2e9045414094ddd',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -449,6 +439,24 @@
             'reference' => '22177cc71807d38f2810c6204d8f7183d88a57d3',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/tinker',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'lcobucci/clock' => array(
+            'pretty_version' => '2.3.0',
+            'version' => '2.3.0.0',
+            'reference' => 'c7aadcd6fd97ed9e199114269c0be3f335e38876',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../lcobucci/clock',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'lcobucci/jwt' => array(
+            'pretty_version' => '4.0.4',
+            'version' => '4.0.4.0',
+            'reference' => '55564265fddf810504110bd68ca311932324b0e9',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../lcobucci/jwt',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -657,15 +665,9 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
-<<<<<<< HEAD
-            'pretty_version' => '11.5.8',
-            'version' => '11.5.8.0',
-            'reference' => 'c9bd61aab12f0fc5e82ecfe621ff518a1d1f1049',
-=======
             'pretty_version' => '10.5.45',
             'version' => '10.5.45.0',
             'reference' => 'bd68a781d8e30348bc297449f5234b3458267ae8',
->>>>>>> ef71114e95b9ff8048c5104e5d4eb849458c3ab8
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
@@ -1014,6 +1016,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'stella-maris/clock' => array(
+            'pretty_version' => '0.1.7',
+            'version' => '0.1.7.0',
+            'reference' => 'fa23ce16019289a18bb3446fdecd45befcdd94f8',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../stella-maris/clock',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'symfony/console' => array(
             'pretty_version' => 'v6.4.17',
             'version' => '6.4.17.0',
@@ -1293,6 +1304,15 @@
             'reference' => '0d72ac1c00084279c1816675284073c5a337c20d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../tijsverkoyen/css-to-inline-styles',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'tymon/jwt-auth' => array(
+            'pretty_version' => '2.1.1',
+            'version' => '2.1.1.0',
+            'reference' => '51620ebd5b68bb3ce9e66ba86bda303ae5f10f7f',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../tymon/jwt-auth',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

@@ -20,7 +20,7 @@ class RoleFactory extends Factory
     public function definition(): array
     {
         return [
-            'uuid' => Str::uuid(),
+            'id' => Str::uuid(),
             'role_name' => $this->faker->randomElement(['user', 'organizer', 'admin']),
             'created_at' => now(),
             'updated_at' => now(),

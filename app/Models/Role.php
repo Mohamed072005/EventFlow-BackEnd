@@ -12,7 +12,7 @@ class Role extends Model
     use HasUuids;
 
     protected $table = 'role';
-    protected $primaryKey = 'uuid';
+    protected $primaryKey = 'id';
     public $incrementing = false;
     protected $keyType = 'string';
 

@@ -2,32 +2,24 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Model;
-=======
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
->>>>>>> ef71114e95b9ff8048c5104e5d4eb849458c3ab8
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Model
+class User extends Authenticatable implements JWTSubject
 {
-<<<<<<< HEAD
-    use HasUuids;
+    use HasUuids, HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'user';
 
-=======
-    use HasApiTokens, HasFactory, Notifiable;
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    protected $keyType = 'string';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
->>>>>>> ef71114e95b9ff8048c5104e5d4eb849458c3ab8
     protected $fillable = [
         'first_name',
         'last_name',
@@ -36,31 +28,25 @@ class User extends Model
         'role_id',
     ];
 
-<<<<<<< HEAD
-=======
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
->>>>>>> ef71114e95b9ff8048c5104e5d4eb849458c3ab8
     protected $hidden = [
         'password',
     ];
 
-<<<<<<< HEAD
-    public function role() {
+    public function role()
+    {
         return $this->belongsTo(Role::class, 'role_id');
     }
-=======
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
->>>>>>> ef71114e95b9ff8048c5104e5d4eb849458c3ab8
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [
+            'id' => $this->id,
+            'role' => $this->role->role_name,
+        ];
+    }
 }

@@ -52,7 +52,6 @@ return [
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
-<<<<<<< HEAD
             'charset' => env('DB_CHARSET', 'utf8mb4'),
             'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
             'prefix' => '',
@@ -75,10 +74,6 @@ return [
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => env('DB_CHARSET', 'utf8mb4'),
             'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
-=======
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
->>>>>>> ef71114e95b9ff8048c5104e5d4eb849458c3ab8
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,

@@ -19,7 +19,7 @@ class RoleSeeder extends Seeder
         $roles = ['user', 'organizer', 'admin'];
         foreach ($roles as $role) {
             Role::firstOrCreate([
-                'uuid' => Str::uuid(),
+                'id' => Str::uuid(),
                 'role_name' => $role,
             ]);
         }
