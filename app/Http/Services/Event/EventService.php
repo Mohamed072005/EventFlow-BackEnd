@@ -30,14 +30,9 @@ class EventService implements EventServiceInterface
                     throw new \Exception('An event with this name is already verified and cannot be duplicated.', 400);
                 }
 
-                if (is_null($checkEvent->verified_at) && !in_array($userRole->role_name, ['admin', 'organizer'])) {
+                if (is_null($checkEvent->verified_at)) {
                     throw new \Exception('A pending event with this name already exists. Please wait for approval.', 400);
                 }
-            }
-            if ($userRole->role_name === 'admin' || $userRole->role_name === 'organizer'){
-                $data['verified_at'] = now();
-            }else {
-                $data['verified_at'] = null;
             }
             $data['user_id'] = $user->id;
             $data['image_url'] = $data['image_url'] ?? '';
