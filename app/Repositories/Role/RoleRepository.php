@@ -11,4 +11,9 @@ class RoleRepository implements RoleRepositoryInterface
     {
         return Role::where('role_name', $role)->first();
     }
+
+    public function getRoleById(string $id)
+    {
+        return Role::where('id', $id)->first();
+    }
 }

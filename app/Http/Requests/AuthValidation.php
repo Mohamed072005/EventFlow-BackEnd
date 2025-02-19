@@ -9,19 +9,22 @@ class AuthValidation
 {
     static $instance = null;
 
-    // Singleton pattern to ensure only one instance
-    static function getInstance(){
-        if(self::$instance == null){
+    private function __construct()
+    {
+    }
+
+    static function getInstance()
+    {
+        if (self::$instance == null) {
             self::$instance = new self();
         }
         return self::$instance;
     }
 
-    // Validate the request based on the method type
     public function validate($method, $request)
     {
         $rules = [];
-        switch($method) {
+        switch ($method) {
             case 'register':
                 $rules = [
                     'first_name' => 'required|string|max:255',
@@ -41,10 +44,10 @@ class AuthValidation
 
         $validator = Validator::make($request->all(), $rules);
 
-            if ($validator->fails()) {
-                throw new \Exception($validator->errors()->first());
-            }
-
-            return true;
+        if ($validator->fails()) {
+            throw new \Exception($validator->errors()->first());
         }
+
+        return true;
+    }
 }
