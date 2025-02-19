@@ -16,4 +16,10 @@ class UserRepository implements UserRepositoryInterface
             'role_id' => $data['role_id'],
         ]);
     }
+
+    public function updateUserRole(User $user, string $role_id)
+    {
+        $user->role_id = $role_id;
+        $user->save();
+    }
 }
