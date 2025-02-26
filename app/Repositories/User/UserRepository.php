@@ -22,4 +22,9 @@ class UserRepository implements UserRepositoryInterface
         $user->role_id = $role_id;
         $user->save();
     }
+
+    public function getAllUsers()
+    {
+        return User::with('role:id,role_name')->get(['id', 'role_id']);
+    }
 }

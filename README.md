@@ -45,7 +45,7 @@ EventHub is a Laravel-based platform that allows users to organize, manage, and 
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
-   DB_DATABASE=eventhub
+   DB_DATABASE=event-flow
    DB_USERNAME=root
    DB_PASSWORD=
    ```
@@ -71,10 +71,10 @@ EventHub is a Laravel-based platform that allows users to organize, manage, and 
 ### Authentication
 - `POST /api/register` - Register a new user
 - `POST /api/login` - User login
+- `GET /api/get/events` - Get all verified events
 
 ### Events (Protected Routes)
 - `POST /api/create/event` - Create a new event
-- `GET /api/get/events` - Get all verified events
 - `PUT /api/verify/event/{id}` - Verify an event (admin only)
 
 ## Planned Enhancements

@@ -8,4 +8,5 @@ interface UserRepositoryInterface
 {
     public function createUser(array $data);
     public function updateUserRole(User $user, string $role_id);
+    public function getAllUsers();
 }

@@ -58,4 +58,5 @@ class EventService implements EventServiceInterface
             throw $e;
         }
     }
+
 }
