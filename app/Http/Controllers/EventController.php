@@ -8,6 +8,7 @@ use App\Http\Services\Event\EventServiceInterface;
 use App\Models\Event;
 use App\Repositories\Event\EventRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Nette\Schema\ValidationException;
 
 class EventController extends Controller
@@ -30,7 +31,7 @@ class EventController extends Controller
                 throw new ValidationException($result);
             }
             $event = $this->eventService->createEvent($request->all());
-            return response()->json(['message' => 'Create Success', 'event' => $event], 201);
+            return response()->json(['message' => 'Create Success, please wait Admin Improvement', 'event' => $event], 201);
         } catch (\Illuminate\Database\QueryException $e) {
             return response()->json([
                 'error' => 'Database error',
@@ -67,6 +68,42 @@ class EventController extends Controller
         try {
             $event = $this->eventService->verifyEventAndUpdateUserRoles($id);
             return response()->json(['message' => 'Verify Success', 'event' => $event], 200);
+        }catch (\Illuminate\Database\QueryException $e) {
+            return response()->json([
+                'error' => 'Database error',
+                'message' => $e->getMessage()
+            ], 500);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Something went wrong',
+                'message' => $e->getMessage()
+            ], 400);
+        }
+    }
+
+    public function getEvents()
+    {
+        try {
+            $events = $this->eventRepository->fetchEvents();
+            return response()->json(['events' => $events], 200);
+        }catch (\Illuminate\Database\QueryException $e) {
+            return response()->json([
+                'error' => 'Database error',
+                'message' => $e->getMessage()
+            ], 500);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Something went wrong',
+                'message' => $e->getMessage()
+            ], 400);
+        }
+    }
+
+    public function getOrganizerEvents(){
+        try {
+            $user = Auth::user();
+            $events = $this->eventRepository->getOrganizerEvents($user->id);
+            return response()->json(['events' => $events], 200);
         }catch (\Illuminate\Database\QueryException $e) {
             return response()->json([
                 'error' => 'Database error',

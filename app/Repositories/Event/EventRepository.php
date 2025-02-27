@@ -35,4 +35,34 @@ class EventRepository implements EventRepositoryInterface
         $event->save();
         return $event;
     }
+
+    public function fetchEvents()
+    {
+        return Event::with(['user:id,first_name,role_id,email', 'user.role:id,role_name'])->get();
+    }
+
+    public function getEventCount()
+    {
+       return Event::all()->count();
+    }
+
+    public function getOrganizerEventsCount(string $id)
+    {
+        return Event::where('user_id', $id)->count();
+    }
+
+    public function getOrganizerVerifiedEventsCount(string $id)
+    {
+        return Event::where('user_id', $id)->where('verified_at', '!=', null)->count();
+    }
+
+    public function getOrganizerUnverifiedEventsCount(string $id)
+    {
+        return Event::where('user_id', $id)->where('verified_at', null)->count();
+    }
+
+    public function getOrganizerEvents(string $id)
+    {
+        return Event::where('user_id', $id)->get();
+    }
 }
